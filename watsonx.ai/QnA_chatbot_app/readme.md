@@ -19,10 +19,39 @@ For the IBM Cloud SaaS version, please refer to the [IBM Resource Hub](https://d
 
 ## Pre - Reqs to run this app
 - Please make sure to run Q&A RAG pipeline and copy deployment function url from the deployment space where it is deployed on Watsonx.ai aaS or On Prem environments. 
-- Admin user should update the .env file in this folder. Must gather details of watsonx.ai endpoint configuration details before starting this.
+- **IMPORTANT**: You need to create a `.env` file in this folder with the required environment variables (see template below). Must gather details of watsonx.ai endpoint configuration details before starting this.
 - Clone or download this repository.
 - Navigate to the project directory `QnA_chatbot_app`
-- Please make sure to update the `.env` hidden file according to your specific use case.
+- Create a `.env` file in the project directory with the following template:
+
+```bash
+# Copy this template to a new file named .env and fill in your actual values
+
+# Required: Deployment URL for your Watsonx.ai RAG function
+QNA_RAG_DEPLOYMENT_URL=
+
+# Required: Environment type - either "saas" or "on-prem"
+QNA_RAG_ENV_TYPE=saas
+
+# For SaaS environment:
+# Required: Your IBM Cloud API key
+QNA_RAG_SAAS_IAM_APIKEY=
+
+# For On-Premises environment:
+# Required: Username for CPD (Cloud Pak for Data)
+QNA_RAG_ONPREM_CPD_USERNAME=
+# Required: API key for CPD
+QNA_RAG_ONPREM_CPD_APIKEY=
+
+# Optional: Enable expert recommendation feature (true/false)
+ENABLE_EXPERT_RECOMMENDATION=false
+
+# Optional: Mark if this is a sample expert (true/false)
+IS_EXPERT_SAMPLE=false
+
+# Required: Number of feedback rating options (2-5)
+FEEDBACK_RATING_OPTIONS=5
+```
 
    - To configure the endpoint of the Q&A RAG Accelerator for connection with the Streamlit app: [Required]
    
